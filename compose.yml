@@ -1,14 +1,14 @@
 ---
 services:
   db:
-    image: maheshkanaveni25/flm2026:dbimage
+    image: maheshkanaveni25/flm2025:dbimage
     ports:
       - "3306:3306"
     deploy:
       replicas: 1
 
   auth_service:
-    image: maheshkanaveni25/flm2026:authimage
+    image: maheshkanaveni25/flm2025:authimage
     ports:
       - "5001:5001"
     deploy:
@@ -17,7 +17,7 @@ services:
       - db
 
   book_service:
-    image: maheshkanaveni25/flm2026:bookimage
+    image: maheshkanaveni25/flm2025:bookimage
     ports:
       - "5002:5002"
     deploy:
@@ -26,7 +26,7 @@ services:
       - db
 
   borrow_service:
-    image: maheshkanaveni25/flm2026:borrowimage
+    image: maheshkanaveni25/flm2025:borrowimage
     ports:
       - "5003:5003"
     deploy:
@@ -35,7 +35,7 @@ services:
       - db
 
   app_service:
-    image: maheshkanaveni25/flm2026:appimage
+    image: maheshkanaveni25/flm2025:appimage
     ports:
       - "5000:5000"
     deploy:
