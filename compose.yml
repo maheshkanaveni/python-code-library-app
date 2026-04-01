@@ -4,6 +4,9 @@ services:
     image: maheshkanaveni25/flm2025:dbimage
     ports:
       - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: library_db
     deploy:
       replicas: 1
 
@@ -11,8 +14,11 @@ services:
     image: maheshkanaveni25/flm2025:authimage
     ports:
       - "5001:5001"
-    deploy:
-      replicas: 1
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: library_db
     depends_on:
       - db
 
@@ -20,8 +26,11 @@ services:
     image: maheshkanaveni25/flm2025:bookimage
     ports:
       - "5002:5002"
-    deploy:
-      replicas: 1
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: library_db
     depends_on:
       - db
 
@@ -29,8 +38,11 @@ services:
     image: maheshkanaveni25/flm2025:borrowimage
     ports:
       - "5003:5003"
-    deploy:
-      replicas: 1
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: library_db
     depends_on:
       - db
 
@@ -38,8 +50,6 @@ services:
     image: maheshkanaveni25/flm2025:appimage
     ports:
       - "5000:5000"
-    deploy:
-      replicas: 1
     depends_on:
       - auth_service
       - book_service
